@@ -1,1 +1,19 @@
-<p>ticket-list works!</p>
+<button (click)="toggleTickets()">Sterge/Adauga tichetele</button>
+
+@if (displayedTickets.length === 0) {
+    <p class="no-tickets">Nu exista tichete de afisat.</p>
+}
+
+@if (displayedTickets.length > 0) {
+    @for (ticket of displayedTickets; track ticket.id) {
+    <app-ticket-card>
+        <div class="ticket-card">
+            <h2 [attr.title]="ticket.description.substring(0, 50) + '...'">
+                #{{ ticket.id }} {{ ticket.title }}
+            </h2>
+            <p><b>Key:</b> {{ ticket.ticketKey }} </p>
+            <p><b>Description:</b> {{ ticket.description }}</p>
+        </div>
+    </app-ticket-card>
+    }
+}
