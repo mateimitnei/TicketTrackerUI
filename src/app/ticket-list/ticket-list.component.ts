@@ -23,7 +23,7 @@ export class TicketListComponent {
     {
       id: 2,
       ticketKey: 'TK-115',
-      title: 'Another Sample Ticket',
+      title: 'Ssample Ticket',
       description: 'This is the second mock ticket ever created for this frontend project.',
       createdAt: new Date(),
       statusId: 2,
@@ -32,7 +32,7 @@ export class TicketListComponent {
     {
       id: 3,
       ticketKey: 'TK-116',
-      title: 'Yet Another Sample Ticket',
+      title: 'Sample Ticcket',
       description: 'This is the third mock ticket ever created for this frontend project.',
       createdAt: new Date(),
       statusId: 3,
@@ -41,7 +41,7 @@ export class TicketListComponent {
     {
       id: 4,
       ticketKey: 'TK-117',
-      title: 'Yet Another Sample Ticket',
+      title: 'Sample Tickett',
       description: 'This is the fourth mock ticket ever created for this frontend project.',
       createdAt: new Date(),
       statusId: 1,
@@ -50,7 +50,7 @@ export class TicketListComponent {
     {
       id: 5,
       ticketKey: 'TK-118',
-      title: 'Yet Another Sample Ticket',
+      title: 'Sammple Ticket',
       description: 'This is the fifth mock ticket ever created for this frontend project.',
       createdAt: new Date(),
       statusId: 2,
@@ -59,7 +59,7 @@ export class TicketListComponent {
     {
       id: 6,
       ticketKey: 'TK-119',
-      title: 'Yet Another Sample Ticket',
+      title: 'Ssammple Ticckett',
       description: 'This is the sixth mock ticket ever created for this frontend project.',
       createdAt: new Date(),
       statusId: 3,
