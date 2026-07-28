@@ -1,15 +1,18 @@
 import { Component } from '@angular/core';
 import { TicketCardComponent } from '../ticket-card/ticket-card.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-ticket-list',
-  imports: [TicketCardComponent],
+  imports: [TicketCardComponent, FormsModule],
   templateUrl: './ticket-list.component.html',
   styleUrl: './ticket-list.component.css',
 })
 
 export class TicketListComponent {
-  displayedTickets: any[];
+  searchText: string = '';
+  newTicketTitle: string = '';
+  newTicketPriorityId: number = 0;
   tickets = [
     {
       id: 1,
@@ -67,15 +70,33 @@ export class TicketListComponent {
     }
   ]
 
-  constructor() {
-    this.displayedTickets = this.tickets;
+  get filteredTickets() {
+    if (!this.searchText) {
+      return this.tickets;
+    }
+
+    return this.tickets.filter(
+      ticket => ticket.title.toLowerCase().includes(this.searchText.toLowerCase())
+    );
   }
 
-  toggleTickets() {
-    if (this.displayedTickets.length === 0) {
-      this.displayedTickets = this.tickets;
-    } else {
-      this.displayedTickets = [];
+  addTicket() {
+    if (this.newTicketTitle.trim() === '' || this.newTicketPriorityId === 0) {
+      return;
     }
+
+    const newTicket = {
+      id: this.tickets.length + 1,
+      ticketKey: `TK-${114 + this.tickets.length}`,
+      title: this.newTicketTitle,
+      description: `This is the ${this.tickets.length + 1} mock ticket ever created for this frontend project.`,
+      createdAt: new Date(),
+      statusId: 1,
+      priorityId: this.newTicketPriorityId
+    };
+
+    this.tickets = [newTicket, ...this.tickets];
+    this.newTicketTitle = '';
+    this.newTicketPriorityId = 0;
   }
 }

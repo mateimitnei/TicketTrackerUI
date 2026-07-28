@@ -1,11 +1,23 @@
-<button (click)="toggleTickets()">Delete/Add Tickets</button>
+<input class="search" type="text" placeholder="Search by title..." [(ngModel)]="searchText" />
 
-@if (displayedTickets.length === 0) {
+<form (ngSubmit)="addTicket()">
+  <input type="text" name="title" placeholder="Title..." [(ngModel)]="newTicketTitle"/>
+
+  <select name="priorityId" [(ngModel)]="newTicketPriorityId">
+    <option [ngValue]="0" disabled hidden>Priority</option>
+    <option [ngValue]="1">LOW</option>
+    <option [ngValue]="2">MEDIUM</option>
+    <option [ngValue]="3">HIGH</option>
+  </select>
+
+  <button type="submit">Add Ticket</button>
+</form>
+
+@if (filteredTickets.length === 0) {
     <p class="no-tickets">Ticket list is empty.</p>
 }
-
-@if (displayedTickets.length > 0) {
-    @for (ticket of displayedTickets; track ticket.id) {
+@else {
+    @for (ticket of filteredTickets; track ticket.id) {
     <app-ticket-card>
         <div class="ticket-card">
             <h2 [attr.title]="ticket.description.substring(0, 50) + '...'">
