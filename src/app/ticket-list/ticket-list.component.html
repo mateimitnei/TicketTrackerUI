@@ -1,7 +1,7 @@
-<button (click)="toggleTickets()">Sterge/Adauga tichetele</button>
+<button (click)="toggleTickets()">Delete/Add Tickets</button>
 
 @if (displayedTickets.length === 0) {
-    <p class="no-tickets">Nu exista tichete de afisat.</p>
+    <p class="no-tickets">Ticket list is empty.</p>
 }
 
 @if (displayedTickets.length > 0) {
