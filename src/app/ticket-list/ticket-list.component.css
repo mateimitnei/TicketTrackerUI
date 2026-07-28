@@ -6,7 +6,7 @@
     margin: 10px;
 }
 
-.ticket-card h1 {
+.ticket-card h2 {
     text-decoration: underline;
     font-weight: bold;
     cursor: default;
@@ -26,4 +26,5 @@ button {
 p.no-tickets {
     font-size: 18px;
     text-align: center;
+    margin-top: 50px;
 }
