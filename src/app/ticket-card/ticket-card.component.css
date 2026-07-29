@@ -1,0 +1,37 @@
+.ticket-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 1px solid #7e7e7e;
+    border-radius: 10px;
+    padding: 20px 30px;
+    margin: 10px;
+}
+
+.ticket-card h2 {
+    text-decoration: underline;
+    font-weight: bold;
+    cursor: default;
+}
+
+button {
+    padding: 17px 22px;
+    border-radius: 10px;
+    cursor: pointer;
+    align-self: flex-end; /* Keeps it in the bottom right */
+    border: 1px solid #333;
+    color: white;
+
+    background: linear-gradient(to right, rgb(205, 42, 42) 50%, #333 50%);
+    background-size: 200% 100%;
+    background-position: right; 
+    transition: background-position 0.15s ease-in-out;
+}
+
+button:hover {
+    background-position: left; 
+}
+
+button:active {
+    border: 1px solid white;
+}

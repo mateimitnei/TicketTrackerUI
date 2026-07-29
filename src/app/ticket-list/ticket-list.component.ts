@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TicketCardComponent } from '../ticket-card/ticket-card.component';
 import { FormsModule } from '@angular/forms';
+import { ITicket } from '../ticket.model';
 
 @Component({
   selector: 'app-ticket-list',
@@ -13,7 +14,7 @@ export class TicketListComponent {
   searchText: string = '';
   newTicketTitle: string = '';
   newTicketPriorityId: number = 0;
-  tickets = [
+  tickets : ITicket[] = [
     {
       id: 1,
       ticketKey: 'TK-114',
@@ -84,12 +85,11 @@ export class TicketListComponent {
     if (this.newTicketTitle.trim() === '' || this.newTicketPriorityId === 0) {
       return;
     }
-
     const newTicket = {
       id: this.tickets.length + 1,
       ticketKey: `TK-${114 + this.tickets.length}`,
       title: this.newTicketTitle,
-      description: `This is the ${this.tickets.length + 1} mock ticket ever created for this frontend project.`,
+      description: `User created a ticket after clicking the "Add Ticket" button.`,
       createdAt: new Date(),
       statusId: 1,
       priorityId: this.newTicketPriorityId
@@ -98,5 +98,9 @@ export class TicketListComponent {
     this.tickets = [newTicket, ...this.tickets];
     this.newTicketTitle = '';
     this.newTicketPriorityId = 0;
+  }
+
+  deleteTicketById(ticketId: number) {
+    this.tickets = this.tickets.filter(ticket => ticket.id !== ticketId);
   }
 }

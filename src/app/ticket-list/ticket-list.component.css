@@ -1,18 +1,4 @@
-.ticket-card {
-    font-family: monospace;
-    border: 1px solid #7e7e7e;
-    border-radius: 15px;
-    padding: 20px;
-    margin: 10px;
-}
-
-.ticket-card h2 {
-    text-decoration: underline;
-    font-weight: bold;
-    cursor: default;
-}
-
-p {
+    p {
     font-size: 16px;
 }
 
@@ -20,7 +6,7 @@ input.search {
     font-size: 16px;
     padding: 10px;
     border: 1px solid #373737;
-    border-radius: 10px;
+    border-radius: 7px;
     display: block;
     margin: 20px auto;
 }
@@ -37,29 +23,44 @@ form {
 }
 
 form input {
-    padding: 10px;
-    border-radius: 10px;
+    padding: 15px;
+    border-radius: 7px;
     border: 1px solid #373737;
 }
 
 form select {
-    padding: 10px;
-    border-radius: 10px;
+    padding: 15px;
+    border-radius: 7px;
     border: 1px solid #373737;
 }
 
 form button {
-    padding: 10px 20px;
-    border-radius: 10px;
+    margin-left: 15px;
+    padding: 15px;
+    border-radius: 7px;
     border: 1px solid #373737;
     background-color: #373737;
     color: white;
     cursor: pointer;
+
+    background: linear-gradient(to right, rgb(255, 203, 30) 50%, #333 50%);
+    background-size: 202% 100%;
+    background-position: 99%; 
+    transition: background-position 0.15s ease-in-out, border 0.15s ease-in-out, color 0.15s ease-in-out;
 }
 
+form button:hover {
+    background-position: left;
+    color: black;
+}
+
+form button:active {
+    border: 1px solid #e8e8e8;
+}
 
 p.no-tickets {
     font-size: 18px;
+    color:#656565;
     text-align: center;
-    margin-top: 50px;
+    margin-top: 100px;
 }
