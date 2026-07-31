@@ -1,12 +1,16 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ITicket } from '../ticket.model';
+import { CommonModule } from '@angular/common';
+import { StatusLabelPipe } from '../pipes/statusLabel.pipe';
+import { PriorityLabelPipe } from '../pipes/priorityLabel';
 
 @Component({
   selector: 'app-ticket-card',
-  imports: [],
+  imports: [CommonModule, StatusLabelPipe, PriorityLabelPipe],
   templateUrl: './ticket-card.component.html',
   styleUrl: './ticket-card.component.css',
 })
+
 export class TicketCardComponent {
   @Input() ticket: ITicket = {
     id: 0,

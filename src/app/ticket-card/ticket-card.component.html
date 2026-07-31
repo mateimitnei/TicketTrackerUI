@@ -1,9 +1,12 @@
 <div class="ticket-card">
     <div class="info">
     <h2 [attr.title]="ticket.description.substring(0, 50) + '...'">
-        #{{ ticket.id }} {{ ticket.title }}
+        #{{ ticket.id }} {{ ticket.title | titlecase }}
     </h2>
     <p><b>Key:</b> {{ ticket.ticketKey }} </p>
+    <p><b>Created:</b> {{ ticket.createdAt | date }}</p>
+    <p><b>Status:</b> {{ ticket.statusId | statusLabel }}</p>
+    <p><b>Priority:</b> {{ ticket.priorityId | priorityLabel : false }}</p>
     <p><b>Description:</b> {{ ticket.description }}</p>
     </div>
     <button (click)="deleteTicket()">Delete</button>
