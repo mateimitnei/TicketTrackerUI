@@ -22,16 +22,13 @@ form {
     padding: 20px;
 }
 
-form input {
-    padding: 15px;
-    border-radius: 7px;
-    border: 1px solid #373737;
-}
-
+form input,
 form select {
     padding: 15px;
     border-radius: 7px;
     border: 1px solid #373737;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 form button {
@@ -54,8 +51,42 @@ form button:hover {
     color: black;
 }
 
+form button.disabled {
+    background: none;
+    color: gray;
+    cursor: not-allowed;
+}
+
+form button.disabled:hover {
+    color: gray;
+}
+
 form button:active {
     border: 1px solid #e8e8e8;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 15px;
+}
+
+.title-group,
+.priority-group {
+    position: relative;
+    padding-bottom: 17px;
+}
+
+.description-group {
+  grid-column: 1 / -1; 
+}
+
+.error {
+  position: absolute;
+  bottom: 0;
+  left: 5px;
+  color: red;
+  font-size: 12px;
 }
 
 p.no-tickets {

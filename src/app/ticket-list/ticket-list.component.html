@@ -1,16 +1,33 @@
 <input class="search" type="text" placeholder="Search by title..." [(ngModel)]="searchText" (ngModelChange)="onSearch()"/>
 
-<form (ngSubmit)="addTicket()">
-  <input type="text" name="title" placeholder="Title..." [(ngModel)]="newTicketTitle"/>
+<form [formGroup]="ticketForm" (ngSubmit)="addTicket()" class="ticket-form">
+  
+  <div class="form-grid">
+    <div class="form-group title-group">
+      <input type="text" formControlName="title" placeholder="Title..." />
+      @if (ticketForm.get('title')?.invalid && pressedSubmit) {
+        <small class="error">Titlul este obligatoriu.</small>
+      }
+    </div>
 
-  <select name="priorityId" [(ngModel)]="newTicketPriorityId">
-    <option [ngValue]="0" disabled hidden>Priority</option>
-    <option [ngValue]="1">LOW</option>
-    <option [ngValue]="2">MEDIUM</option>
-    <option [ngValue]="3">HIGH</option>
-  </select>
+    <div class="form-group priority-group">
+      <select formControlName="priorityId">
+        <option [ngValue]="0" disabled hidden>Priority</option>
+        <option [ngValue]="1">LOW</option>
+        <option [ngValue]="2">MEDIUM</option>
+        <option [ngValue]="3">HIGH</option>
+      </select>
+      @if (ticketForm.get('priorityId')?.invalid && pressedSubmit) {
+        <small class="error">Selectează o prioritate.</small>
+      }
+    </div>
 
-  <button type="submit">Add Ticket</button>
+    <div class="form-group description-group">
+      <input type="text" formControlName="description" placeholder="Description..." />
+    </div>
+  </div>
+
+  <button type="submit" class="submit-btn" [class.disabled]="ticketForm.invalid">Add Ticket</button>
 </form>
 
 @if (ticketsObs | async; as tickets) {

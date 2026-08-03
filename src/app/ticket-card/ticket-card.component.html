@@ -7,7 +7,9 @@
     <p><b>Created:</b> {{ ticket.createdAt | date }}</p>
     <p><b>Status:</b> {{ ticket.statusId | statusLabel }}</p>
     <p><b>Priority:</b> {{ ticket.priorityId | priorityLabel : false }}</p>
-    <p><b>Description:</b> {{ ticket.description }}</p>
+    @if (ticket.description) {
+      <p><b>Description:</b> {{ ticket.description }}</p>
+    }
     </div>
     <button (click)="deleteTicket()">Delete</button>
 </div>
