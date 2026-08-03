@@ -6,7 +6,7 @@
     <div class="form-group title-group">
       <input type="text" formControlName="title" placeholder="Title..." />
       @if (ticketForm.get('title')?.invalid && pressedSubmit) {
-        <small class="error">Titlul este obligatoriu.</small>
+        <p class="error">Title required (max 100 letters).</p>
       }
     </div>
 
@@ -18,12 +18,15 @@
         <option [ngValue]="3">HIGH</option>
       </select>
       @if (ticketForm.get('priorityId')?.invalid && pressedSubmit) {
-        <small class="error">Selectează o prioritate.</small>
+        <p class="error">Select a priority.</p>
       }
     </div>
 
     <div class="form-group description-group">
-      <input type="text" formControlName="description" placeholder="Description..." />
+      <input type="text" formControlName="description" placeholder="Description (optional)..." />
+      @if (ticketForm.get('description')?.invalid && pressedSubmit) {
+        <p class="error">Description must be less than 1000 characters.</p>
+      }
     </div>
   </div>
 
