@@ -1,4 +1,4 @@
-<input class="search" type="text" placeholder="Search by title..." [(ngModel)]="searchText" />
+<input class="search" type="text" placeholder="Search by title..." [(ngModel)]="searchText" (ngModelChange)="onSearch()"/>
 
 <form (ngSubmit)="addTicket()">
   <input type="text" name="title" placeholder="Title..." [(ngModel)]="newTicketTitle"/>
@@ -13,11 +13,13 @@
   <button type="submit">Add Ticket</button>
 </form>
 
-@if (filteredTickets.length === 0) {
+@if (ticketsObs | async; as tickets) {
+  @if (tickets.length === 0) {
     <p class="no-tickets">Ticket list is empty.</p>
-}
-@else {
-    @for (ticket of filteredTickets; track ticket.id) {
-        <app-ticket-card [ticket]="ticket" (delete)="deleteTicketById($event)"/>
+  }
+  @else {
+    @for (ticket of tickets; track ticket.id) {
+      <app-ticket-card [ticket]="ticket" (delete)="deleteTicketById($event)"/>
     }
+  }
 }
