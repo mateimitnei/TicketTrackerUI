@@ -1,29 +1,26 @@
-p {
-    margin: 5px 0;
+.all {
+    width: 1000px;
+    max-width: 80%;
+    margin: 50px auto;
 }
 
 .ticket-card {
+
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     border: 1px solid #7e7e7e;
     border-radius: 10px;
-    padding: 20px 30px;
-    margin: 10px;
+    padding: 40px 60px;
 }
 
-.ticket-card a {
-    width: fit-content;
-    display: block;
+.ticket-card h2 {
     text-decoration: underline;
     font-weight: bold;
-    cursor: pointer;
-    color: black;
-    transition: color 0.1s ease-in-out;
 }
 
-.ticket-card a:hover {
-    color: #b62727;
+.ticket-card p {
+    margin: 5px 0;
 }
 
 button {
@@ -37,11 +34,15 @@ button {
     transition: background-color 0.1s ease-in-out, border 0.1s ease-in-out; 
 }
 
-button:hover {
+.delete-btn:hover {
     background-color: #b62727;
     border-color: #b62727;
 }
 
-button:active {
+.delete-btn:active {
     border-color: white;
+}
+
+.back-btn {
+    margin-bottom: 20px;
 }

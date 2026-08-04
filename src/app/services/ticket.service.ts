@@ -86,4 +86,8 @@ export class TicketService {
   deleteTicketById(id: number) {
     this.tickets = this.tickets.filter(t => t.id !== id);
   }
+
+  getTicketByKey(key: string | undefined): ITicket | undefined {
+    return this.tickets.find(ticket => ticket.ticketKey === key);
+  }
 }

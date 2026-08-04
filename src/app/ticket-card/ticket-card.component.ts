@@ -3,24 +3,17 @@ import { ITicket } from '../ticket.model';
 import { CommonModule } from '@angular/common';
 import { StatusLabelPipe } from '../pipes/statusLabel.pipe';
 import { PriorityLabelPipe } from '../pipes/priorityLabel';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-ticket-card',
-  imports: [CommonModule, StatusLabelPipe, PriorityLabelPipe],
+  imports: [CommonModule, StatusLabelPipe, PriorityLabelPipe, RouterLink],
   templateUrl: './ticket-card.component.html',
   styleUrl: './ticket-card.component.css',
 })
 
 export class TicketCardComponent {
-  @Input() ticket: ITicket = {
-    id: 0,
-    ticketKey: '',
-    title: 'Dummy Ticket',
-    description: 'No data.',
-    createdAt: new Date(),
-    statusId: 0,
-    priorityId: 0
-  };
+  @Input() ticket!: ITicket;
 
   @Output() delete = new EventEmitter<number>();
 
