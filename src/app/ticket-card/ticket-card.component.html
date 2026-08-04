@@ -6,7 +6,7 @@
             </h2>
         </a>
         <p><b>Key:</b> {{ ticket.ticketKey }} </p>
-        <p><b>Created:</b> {{ ticket.createdAt | date }}</p>
+        <p><b>Created:</b> {{ ticket.createdAt | date:'medium' }}</p>
         <p><b>Status:</b> {{ ticket.statusId | statusLabel }}</p>
         <p><b>Priority:</b> {{ ticket.priorityId | priorityLabel : false }}</p>
         @if (ticket.description) {

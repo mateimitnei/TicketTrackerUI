@@ -9,12 +9,31 @@
                     #{{ ticket.id }} {{ ticket.title | titlecase }}
                 </h2>
                 <p><b>Key:</b> {{ ticket.ticketKey }} </p>
-                <p><b>Created:</b> {{ ticket.createdAt | date }}</p>
+                <p><b>Created:</b> {{ ticket.createdAt | date:'medium' }}</p>
                 <p><b>Status:</b> {{ ticket.statusId | statusLabel }}</p>
                 <p><b>Priority:</b> {{ ticket.priorityId | priorityLabel : false }}</p>
                 @if (ticket.description) {
                 <p><b>Description:</b> {{ ticket.description }}</p>
                 }
+                <div class="audit-log">
+                    <h2>Audit Log:</h2>
+                    @if (loadingAudits()) {
+                        <p>Loading log...</p>
+                    }
+                    @else if (audits.length === 0) {
+                        <p>No status change log for this ticket.</p>
+                    }
+                    @else {
+                        @for (audit of audits; track audit.id) {
+                            <div class="audit-item">
+                                <p>Id: {{ audit.id }}</p>
+                                <p>Change Type: {{ audit.changeType | titlecase }}</p>
+                                <p>Old Status: {{ audit.ticketStatusId | statusLabel }}</p>
+                                <p>Changed At: {{ audit.changedAt | date:'medium' }}</p>
+                            </div>
+                        }
+                    }
+                </div>
             </div>
             <button class="delete-btn" (click)="deleteTicket()" routerLink='/tickets'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" 

@@ -8,7 +8,7 @@ input.search {
     border: 1px solid #373737;
     border-radius: 7px;
     display: block;
-    margin: 20px auto;
+    margin: 30px auto;
 }
 
 form {
@@ -18,7 +18,8 @@ form {
     align-self: center;
     justify-content: center;
     gap: 30px;
-    background-color: #e8e8e8;
+    background-color: #efefef;
+    border-top: 2px solid #d6d6d6;
     padding: 30px;
 }
 

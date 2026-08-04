@@ -26,12 +26,16 @@
 button {
     padding: 17px 22px;
     border-radius: 7px;
+    border: none;
     cursor: pointer;
-    align-self: flex-end;
-    border: 1px solid white;
     color: white;
     background-color: #333;
     transition: background-color 0.1s ease-in-out, border 0.1s ease-in-out; 
+}
+
+.delete-btn {
+    align-self: flex-start;
+    border: 1px solid white;
 }
 
 .delete-btn:hover {
@@ -45,4 +49,22 @@ button {
 
 .back-btn {
     margin-bottom: 20px;
+}
+
+.audit-log {
+    margin-top: 50px;
+}
+
+.audit-log h2 {
+    text-decoration: none;
+    margin-bottom: 30px;
+}
+
+.audit-item {
+    border-top: 2px solid #d6d6d6;
+    border-radius: 5px;
+    list-style-type: none;
+    margin-top: 20px;
+    background-color: #efefef;
+    padding: 10px 20px;
 }
