@@ -2,13 +2,18 @@ p {
     font-size: 16px;
 }
 
+.header button {
+    position: absolute;
+    margin-left: 10px;
+}
+
 input.search {
     font-size: 16px;
     padding: 10px;
     border: 1px solid #373737;
     border-radius: 7px;
-    display: block;
     margin: 30px auto;
+    display: block;
 }
 
 form {
@@ -32,14 +37,16 @@ form select {
     box-sizing: border-box;
 }
 
-form button {
+button {
     padding: 15px;
     border-radius: 7px;
-    border: 1px solid #373737;
-    background-color: #373737;
+    border: 1px solid #333;
+    background-color: #333;
     color: white;
     cursor: pointer;
+}
 
+form button {
     background: linear-gradient(to right, rgb(255, 203, 30) 50%, #333 50%);
     background-size: 202% 100%;
     background-position: 99%; 

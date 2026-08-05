@@ -26,8 +26,10 @@ export class TicketDetailsComponent {
 
     ngOnInit() {
         this.key = this.route.snapshot.params['ticketKey'];
+
         if (this.key) {
             this.ticket = this.ticketService.getTicketByKey(this.key);
+            
             this.auditsSubscription = this.ticketService.getAuditForTicket(this.key)
                 .pipe(map(audits => audits.filter(audit => audit.changeType === 'status')))
                 .subscribe(filteredAudits => {

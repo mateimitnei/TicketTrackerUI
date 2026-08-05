@@ -1,4 +1,7 @@
-<input class="search" type="text" placeholder="Search by title..." [(ngModel)]="searchText" (ngModelChange)="onSearch()"/>
+<div class="header">
+  <button routerLink=''>&lt; Dashboard</button>
+  <input class="search" type="text" placeholder="Search by title..." [(ngModel)]="searchText" (ngModelChange)="displayTickets()"/>
+</div>
 
 <form [formGroup]="ticketForm" (ngSubmit)="addTicket()" class="ticket-form">
   
@@ -33,7 +36,7 @@
   <button type="submit" class="submit-btn" [class.disabled]="ticketForm.invalid">Add Ticket</button>
 </form>
 
-@if (ticketsObs | async; as tickets) {
+@if (filteredTicketsObs | async; as tickets) {
   @if (tickets.length === 0) {
     <p class="no-tickets">Ticket list is empty.</p>
   }

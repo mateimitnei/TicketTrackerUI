@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ITicket } from '../ticket.model';
 import { IAudit } from '../audit.model';
-import { delay, Observable, of } from 'rxjs';
+import { BehaviorSubject, delay, Observable, of } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
@@ -117,20 +117,18 @@ export class TicketService {
 
     private newId: number = this.tickets.length + 1;
     private newKeyNumber: number = 114 + this.tickets.length;
+    private statusFilter = new BehaviorSubject<number>(0);
 
     getTickets(): Observable<ITicket[]> {
         return of(this.tickets);
     }
 
-    getLength(): number {
-        return this.tickets.length;
+    getFilter(): Observable<number> {
+        return this.statusFilter.asObservable();
     }
 
-    searchTickets(searchText: string): Observable<ITicket[]> {
-        const filteredTickets = this.tickets.filter(ticket => 
-            ticket.title.toLowerCase().includes(searchText.toLowerCase())
-        );
-        return of(filteredTickets);
+    getLength(): number {
+        return this.tickets.length;
     }
 
     addTicket(formValues: any) {
@@ -158,5 +156,17 @@ export class TicketService {
 
     getAuditForTicket(key: string): Observable<IAudit[]> {
         return of(this.auditLog.filter(audit => audit.ticketKey === key)).pipe(delay(1000));
+    }
+
+    getTicketsCountByStatus(): number[] {
+        const statusCounts = [0, 0, 0, 0];
+        for (const ticket of this.tickets) {
+            statusCounts[ticket.statusId - 1]++;
+        }
+        return statusCounts;
+    }
+
+    updateFilter(statusId: number) {
+        this.statusFilter.next(statusId);
     }
 }
