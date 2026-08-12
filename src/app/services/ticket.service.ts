@@ -71,14 +71,6 @@ export class TicketService {
     return this.tickets.length;
   }
 
-  searchTickets(searchText: string): Observable<ITicket[]> {
-    const filteredTickets = this.tickets.filter(ticket => 
-      ticket.title.toLowerCase().includes(searchText.toLowerCase())
-    );
-
-    return of(filteredTickets);
-  }
-
   addTicket(ticket: ITicket) {
     this.tickets.push(ticket);
   }

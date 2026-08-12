@@ -3,7 +3,7 @@ import { TicketCardComponent } from '../ticket-card/ticket-card.component';
 import { FormsModule } from '@angular/forms';
 import { ITicket } from '../ticket.model';
 import { TicketService } from '../services/ticket.service';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
@@ -29,7 +29,11 @@ export class TicketListComponent {
     if (!this.searchText) {
       this.ticketsObs = this.ticketService.getTickets();
     } else {
-      this.ticketsObs = this.ticketService.searchTickets(this.searchText);
+      this.ticketsObs = this.ticketService.getTickets().pipe(
+        map(tickets => tickets.filter(ticket => 
+          ticket.title.toLowerCase().includes(this.searchText.toLowerCase())
+        ))
+      );
     }
   }
 
