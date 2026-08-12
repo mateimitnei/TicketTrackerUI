@@ -16,8 +16,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 export class TicketListComponent {
   searchText: string = '';
-  newTicketTitle: string = '';
-  newTicketPriorityId: number = 0;
 
   ticketsObs: Observable<ITicket[]> | undefined;
 

@@ -64,6 +64,10 @@ form button:active {
     border: 1px solid #e8e8e8;
 }
 
+form button.disabled:active {
+    border: 1px solid #373737;
+}
+
 .form-grid {
     width: 400px;
     display: grid;

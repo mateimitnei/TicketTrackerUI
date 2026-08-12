@@ -5,7 +5,7 @@
   <div class="form-grid">
     <div class="form-group title-group">
       <input type="text" formControlName="title" placeholder="Title..." />
-      @if (ticketForm.get('title')?.invalid && pressedSubmit) {
+      @if (ticketForm.get('title')?.invalid && ticketForm.get('title')?.touched) {
         <p class="error">Title required (max 100 letters).</p>
       }
     </div>
@@ -17,20 +17,20 @@
         <option [ngValue]="2">MEDIUM</option>
         <option [ngValue]="3">HIGH</option>
       </select>
-      @if (ticketForm.get('priorityId')?.invalid && pressedSubmit) {
+      @if (ticketForm.get('priorityId')?.invalid && ticketForm.get('priorityId')?.touched) {
         <p class="error">Select a priority.</p>
       }
     </div>
 
     <div class="form-group description-group">
       <input type="text" formControlName="description" placeholder="Description (optional)..." />
-      @if (ticketForm.get('description')?.invalid && pressedSubmit) {
+      @if (ticketForm.get('description')?.invalid && ticketForm.get('description')?.touched) {
         <p class="error">Description must be less than 1000 characters.</p>
       }
     </div>
   </div>
 
-  <button type="submit" class="submit-btn" [class.disabled]="ticketForm.invalid">Add Ticket</button>
+  <button type="submit" class="submit-btn" [disabled]="ticketForm.invalid" [class.disabled]="ticketForm.invalid">Add Ticket</button>
 </form>
 
 @if (ticketsObs | async; as tickets) {
