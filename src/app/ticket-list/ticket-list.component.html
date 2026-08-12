@@ -20,7 +20,7 @@
     @for (ticket of filteredTickets; track ticket.id) {
     <app-ticket-card>
         <div class="ticket-card">
-            <h2 [attr.title]="ticket.description.substring(0, 50) + '...'">
+            <h2 [title]="ticket.description.substring(0, 50) + '...'">
                 #{{ ticket.id }} {{ ticket.title }}
             </h2>
             <p><b>Key:</b> {{ ticket.ticketKey }} </p>
